@@ -1,0 +1,112 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+.title-banner {
+  background-image: url('image/tittle-banner.png');
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+.title-banner h1 {
+  color: rgba(235, 242, 240, 0.866);
+  font-size: 3rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}   
+
+.tagline {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #333;
+  margin-top: 10px;
+  font-style: italic;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.trip-form, .map-panel, .history {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.form-row, fieldset {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+input, select, button {
+  padding: 0.7rem;
+  margin-top: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+button {
+  background-color: #4facfe;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #00c6ff;
+}
+
+.map-box {
+  height: 300px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.result {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 6px;
+  background-color: #e0f7fa;
+  color: #006064;
+  font-weight: bold;
+}
+
+.hidden {
+  display: none;
+}
+
+.history ul {
+  list-style: none;
+  padding: 0;
+}
+
+.history li {
+  margin-bottom: 0.75rem;
+  background-color: #f0f0f0;
+  padding: 0.75rem;
+  border-radius: 6px;
+  position: relative;
+}
+
+.history .delete-btn {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  background: none;
+  border: none;
+  color: red;
+  font-size: 1.2rem;
+  cursor: pointer;
+} 
