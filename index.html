@@ -1,49 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Smart Trip Tracker</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
 
-  <!-- Leaflet Map Styling -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
-
-  <!-- Your App Styling -->
-  <link rel="stylesheet" href="style.css">
-
-  <!-- Leaflet JS Library -->
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-
-  <!-- Your Script -->
   <script defer src="main.js"></script>
-
-  <link rel="manifest" href="manifest.json">
+  <link rel="manifest" href="manifest.json" />
 </head>
-
 <body>
   <header class="banner">
-      <div class="wrapper">
-    <div class="title-banner">
-    <h1>Trip Budget Tracker</h1>
-  </div>    
-    <p class="tagline">💸 Plan Smart, Spend Smarter</p>
+    <div class="wrapper">
+      <div class="title-banner">
+        <h1>Trip Budget Tracker</h1>
+      </div>
+      <p class="tagline">💸 Spend Less Time on Math, More Time on Moments.</p>
+    </div>
   </header>
-
   <main class="grid-container">
     <section class="trip-form">
       <h2>Trip Details</h2>
       <form id="trip-form">
         <div class="form-row">
           <label for="trip-start">Start Date</label>
-          <input type="date" id="trip-start" required>
+          <input type="date" id="trip-start" required />
         </div>
         <div class="form-row">
           <label for="trip-end">End Date</label>
-          <input type="date" id="trip-end" required>
+          <input type="date" id="trip-end" required />
         </div>
         <div class="form-row">
           <label for="trip-location">Location</label>
-          <input type="text" id="trip-location" required>
+          <input type="text" id="trip-location" required />
         </div>
         <div class="form-row">
           <label for="currency">Currency</label>
@@ -56,113 +48,87 @@
         </div>
         <div class="form-row">
           <label for="budget">Budget</label>
-          <input type="number" id="budget" placeholder="e.g. 5000" required>
+          <input type="number" id="budget" placeholder="e.g. 5000" required />
         </div>
         <div class="form-row">
           <label for="Number of person">Number of person</label>
-          <input type="number" id="Number-of-person" placeholder="e.g. 5" required>
+          <input type="number" id="Number-of-person" placeholder="e.g. 5" required />
         </div>
-                <div class="form-row">
+        <div class="form-row">
           <label for="Number of Male">Male</label>
-          <input type="number" id="Male" placeholder="e.g. 2" required>
+          <input type="number" id="Male" placeholder="e.g. 2" required />
         </div>
         <div class="form-row">
           <label for="Female">Female</label>
-          <input type="number" id="Female" placeholder="Auto-calculated" readonly>
+          <input type="number" id="Female" placeholder="Auto-calculated" readonly />
         </div>
-<script>
-  const totalInput = document.getElementById("Number-of-person");
-  const maleInput = document.getElementById("Male");
-  const femaleInput = document.getElementById("Female");
-
-  function updateGenderCounts() {
-    const total = parseInt(totalInput.value, 10);
-    const male = parseInt(maleInput.value, 10);
-
-    if (!isNaN(total) && !isNaN(male)) {
-      if (male > total) {
-        alert("Number of males cannot exceed total number of persons.");
-        maleInput.value = '';
-        femaleInput.value = '';
-        return;
-      }
-      femaleInput.value = total - male;
-    } else {
-      femaleInput.value = '';
-    }
-  }
-  totalInput.addEventListener("input", updateGenderCounts);
-  maleInput.addEventListener("input", updateGenderCounts);
-</script>
+        <script>
+          const totalInput = document.getElementById("Number-of-person");
+          const maleInput = document.getElementById("Male");
+          const femaleInput = document.getElementById("Female");
+          function updateGenderCounts() {
+            const total = parseInt(totalInput.value, 10);
+            const male = parseInt(maleInput.value, 10);
+            if (!isNaN(total) && !isNaN(male)) {
+              if (male > total) {
+                alert("Number of males cannot exceed total number of persons.");
+                maleInput.value = '';
+                femaleInput.value = '';
+                return;
+              }
+              femaleInput.value = total - male;
+            } else {
+              femaleInput.value = '';
+            }
+          }
+          totalInput.addEventListener("input", updateGenderCounts);
+          maleInput.addEventListener("input", updateGenderCounts);
+        </script>
         <fieldset class="form-row">
           <legend>Categories</legend>
-          <input type="number" id="food" placeholder="Food">
-          <input type="number" id="travel" placeholder="Travel">
-          <input type="number" id="stay" placeholder="Accommodation">
-          <input type="number" id="shopping" placeholder="shopping">
-          <input type="number" id="misc" placeholder="Miscellaneous">
+          <input type="number" id="food" placeholder="Food" />
+          <input type="number" id="travel" placeholder="Travel" />
+          <input type="number" id="stay" placeholder="Accommodation" />
+          <input type="number" id="shopping" placeholder="Shopping" />
+          <input type="number" id="misc" placeholder="Miscellaneous" />
         </fieldset>
-
         <button type="submit">Calculate</button>
         <div id="result" class="result hidden"></div>
       </form>
     </section>
-
     <section class="map-panel">
       <h2>Map</h2>
-      <input type="text" id="map-search" placeholder="Search location">
+      <input type="text" id="map-search" placeholder="Search location" />
       <button id="search-btn">Search</button>
       <div id="map" class="map-box"></div>
+      <div class="photo-gallery">
+  <h2>Explore World</h2>
+  <div class="photo-grid">
+    <img src="image/travelling-wallpaper-1.avif" alt="Photo 1">
+    <img src="image/travelling-wallpaper-2.avif" alt="Photo 2">
+    <img src="image/travelling-wallpaper-3.avif" alt="Photo 3">
+    <img src="image/travelling-wallpaper-4.avif" alt="Photo 4">
+    <img src="image/travellingwallpaper5.avif" alt="Photo 5">
+    <img src="image/travellingwallpaper6.avif" alt="Photo 6">
+    <img src="image/travellingwallpaper7.avif" alt="Photo 7">
+    <img src="image/travellingwallpaper8.avif" alt="Photo 8">
+    <img src="image/travellingwallpaper9.avif" alt="Photo 9">
+    <img src="image/travellingwallpaper10.avif" alt="Photo 10">
+    <img src="image/travellingwallpaper11.avif" alt="Photo 11">
+    <img src="image/travellingwallpaper12.avif" alt="Photo 12">
+    <img src="image/travellingwallpaper13.avif" alt="Photo 13">
+    <img src="image/travellingwallpaper14.avif" alt="Photo 14">
+    <img src="image/travellingwallpaper15.avif" alt="Photo 15>"
+  </div>
+</div>
     </section>
-
     <section class="history">
       <h2>History</h2>
       <ul id="history-list"></ul>
     </section>
   </main>
-  <script>
-  let db;
-  function initDB() {
-    const request = indexedDB.open("TripBudgetDB", 1);
-    request.onupgradeneeded = function (event) {
-      db = event.target.result;
-      const store = db.createObjectStore("trips", { keyPath: "id", autoIncrement: true });
-    };
-    request.onsuccess = function (event) {
-      db = event.target.result;
-      displayHistory();
-    };
-    request.onerror = function (event) {
-      console.error("IndexedDB error:", event.target.errorCode);
-    };
-  }
-  function saveTrip(trip) {
-    const transaction = db.transaction(["trips"], "readwrite");
-    const store = transaction.objectStore("trips");
-    store.add(trip);
-    transaction.oncomplete = () => displayHistory();
-  }
-  function displayHistory() {
-    const historyList = document.getElementById('history-list');
-    const transaction = db.transaction(["trips"], "readonly");
-    const store = transaction.objectStore("trips");
-    const trips = [];
-    store.openCursor(null, "prev").onsuccess = function (event) {
-      const cursor = event.target.result;
-      if (cursor) {
-        trips.push(cursor.value);
-        cursor.continue();
-      } else {
-        historyList.innerHTML = trips.map(item => `
-          <li>
-            <strong>${item.location}</strong> — ${item.currency}${item.totalSpent} spent (Budget: ${item.currency}${item.budget})<br>
-            <small>${item.date}</small><br>
-            <button onclick='displayTripDetails(${JSON.stringify(item)})'>See Info</button>
-          </li>
-        `).join('');
-      }
-    };
-  }
-  </script>
+  <div class="lightbox" id="lightbox">
+  <img src="" alt="Enlarged Photo">
+</div>
 </body>
 </html>
