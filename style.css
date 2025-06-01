@@ -1,3 +1,4 @@
+/* Base styling for the entire app */
 body {
   font-family: 'Playfair Display', serif;
   font-size: 20px;
@@ -6,7 +7,7 @@ body {
   color: #111;
 }
 
-
+/* Header banner with background image and title */
 .title-banner {
   background-image: url('image/tittle-banner.png');
   background-size: cover;
@@ -22,8 +23,9 @@ body {
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
-}   
+}
 
+/* Tagline under the title */
 .tagline {
   text-align: center;
   font-size: 1.8rem;
@@ -33,6 +35,7 @@ body {
   text-decoration: underline;
 }
 
+/* Layout grid for main sections */
 .grid-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -40,6 +43,7 @@ body {
   padding: 2rem;
 }
 
+/* Styling for the card-like sections (form, map, history) */
 .trip-form, .map-panel, .history {
   background: rgb(230, 224, 213);
   padding: 1.5rem;
@@ -47,12 +51,14 @@ body {
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
+/* Form rows and field groups */
 .form-row, fieldset {
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
 }
 
+/* Inputs, selects, and buttons share padding and basic styling */
 input, select, button {
   padding: 0.7rem;
   margin-top: 0.5rem;
@@ -60,6 +66,7 @@ input, select, button {
   border-radius: 6px;
 }
 
+/* Buttons default appearance */
 button {
   background-color: #4facfe;
   color: white;
@@ -67,16 +74,19 @@ button {
   cursor: pointer;
 }
 
+/* Button hover state */
 button:hover {
   background-color: #00c6ff;
 }
 
+/* Map box dimensions and borders */
 .map-box {
   height: 300px;
   border: 1px solid #ccc;
   border-radius: 8px;
 }
 
+/* Result summary output */
 .result {
   margin-top: 1rem;
   padding: 1rem;
@@ -86,15 +96,16 @@ button:hover {
   font-weight: bold;
 }
 
+/* Hide elements like result box initially */
 .hidden {
   display: none;
 }
 
+/* History section styles */
 .history ul {
   list-style: none;
   padding: 0;
 }
-
 .history li {
   margin-bottom: 0.75rem;
   background-color: #f0f0f0;
@@ -103,6 +114,7 @@ button:hover {
   position: relative;
 }
 
+/* Delete button for history entries */
 .history .delete-btn {
   position: absolute;
   top: 8px;
@@ -112,7 +124,9 @@ button:hover {
   color: red;
   font-size: 1.2rem;
   cursor: pointer;
-} 
+}
+
+/* Gallery container section */
 .photo-gallery {
   background: rgb(230, 224, 213);
   padding: 1.5rem;
@@ -121,31 +135,36 @@ button:hover {
   margin-top: 2rem;
 }
 
+/* Gallery title */
 .photo-gallery h2 {
   text-align: center;
   font-size: 2rem;
   margin-bottom: 1rem;
 }
 
+/* Grid layout for 3 photos per row */
 .photo-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
 }
 
+/* Styling for individual photos */
 .photo-grid img {
   width: 100%;
-  height: auto;
+  aspect-ratio: 1 / 1;     /* Ensures square shape */
   border-radius: 8px;
   cursor: pointer;
-  object-fit: cover;
+  object-fit: cover;       /* Ensures image fills square without distortion */
   transition: transform 0.3s ease;
 }
 
+/* Hover effect for photo zoom */
 .photo-grid img:hover {
   transform: scale(1.05);
 }
 
+/* Lightbox overlay for enlarged image view */
 .lightbox {
   display: none;
   position: fixed;
@@ -159,13 +178,14 @@ button:hover {
   z-index: 1000;
 }
 
+/* Enlarged image in lightbox */
 .lightbox img {
   max-width: 90%;
   max-height: 80%;
   border-radius: 10px;
 }
 
+/* Make lightbox visible when active */
 .lightbox.active {
   display: flex;
 }
-
